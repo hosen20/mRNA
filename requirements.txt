@@ -1,0 +1,10 @@
+# Core (already present on Google Colab)
+numpy>=1.24
+torch>=2.0
+matplotlib>=3.6
+
+# RNA thermodynamics - the reference we benchmark against
+ViennaRNA>=2.6
+
+# Optional: only used for the simulator cross-check in notebook 03
+# pennylane>=0.35
