@@ -46,3 +46,30 @@ def index_to_bits(idx, n):
 def memory_estimate(n, dtype_bytes=8):
     """Rough RAM for one statevector, in MB. Handy for the scaling section."""
     return (1 << n) * dtype_bytes / 1e6
+
+
+def check_energy_vector(h, J, E, n_samples=50000, rng=None, tol=1e-4):
+    """Verify the energy vector on a random sample of states.
+
+    Do NOT check all 2^n states above about 20 qubits. Building the full bit
+    matrix costs 2^n x n x 8 bytes once it is cast to float: 738 MB at 22
+    qubits, but 29 GB at 27. That crashes Colab. A random sample of 50k states
+    catches any real bug just as well.
+    """
+    rng = np.random.default_rng(rng)
+    n = len(h)
+    idx = rng.integers(0, 1 << n, size=min(n_samples, 1 << n))
+    bits = index_to_bits(idx, n).astype(np.float64)
+    direct = bits @ h + np.einsum("bi,ij,bj->b", bits, J, bits)
+    worst = float(np.abs(np.asarray(E)[idx] - direct).max())
+    print(f"checked {len(idx)} random states, max difference: {worst:.2e}")
+    if worst <= tol:
+        print("-> energy vector is correct")
+    else:
+        print("-> MISMATCH. Something is wrong with the QUBO or the builder.")
+    return worst
+
+
+def pick_dtype(n, budget_gb=0.5):
+    """float64 while it is cheap, float32 once the vector gets big."""
+    return np.float64 if (1 << n) * 8 / 1e9 <= budget_gb else np.float32

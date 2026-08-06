@@ -14,12 +14,17 @@ def brute_force(E):
 
 
 def random_search(E, n_evals, rng=None):
-    """Pick random bitstrings. The honest floor that everything must beat."""
+    """Pick random bitstrings. The honest floor that everything must beat.
+
+    Returns (curve, best_energy, best_index) so the winner can be decoded
+    into a real structure like every other method.
+    """
     rng = np.random.default_rng(rng)
     idx = rng.integers(0, len(E), size=n_evals)
     vals = E[idx]
     curve = np.minimum.accumulate(vals)
-    return curve, float(curve[-1])
+    best_index = int(idx[int(np.argmin(vals))])
+    return curve, float(curve[-1]), best_index
 
 
 def simulated_annealing(h, J, n_steps=20000, t_start=5.0, t_end=0.01,
@@ -81,6 +86,7 @@ def classical_gpt_ablation(E, n, seq_len=None, epochs=200, n_sample=32,
     opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
 
     best = np.inf
+    best_index = 0
     curve = []
     temperature = 1.0
     for _ in range(epochs):
@@ -89,7 +95,10 @@ def classical_gpt_ablation(E, n, seq_len=None, epochs=200, n_sample=32,
         bits = (tok[:, 1:] - 1).cpu().numpy()
         idx = (bits * (1 << np.arange(n))).sum(axis=1)
         vals = E[idx]
-        best = min(best, float(vals.min()))
+        j = int(np.argmin(vals))
+        if float(vals[j]) < best:
+            best = float(vals[j])
+            best_index = int(idx[j])
         curve.append(best)
 
         model.train()
@@ -100,4 +109,4 @@ def classical_gpt_ablation(E, n, seq_len=None, epochs=200, n_sample=32,
         loss.backward()
         opt.step()
         temperature = max(0.05, temperature * 0.99)
-    return np.array(curve), best
+    return np.array(curve), best, best_index

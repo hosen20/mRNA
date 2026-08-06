@@ -138,8 +138,8 @@ class GPTQE(nn.Module):
         total = torch.zeros((n_seq, 1), device=device)
         for _ in range(seq_len):
             ctx = idx[:, -self.block_size:]
-            logits = self(ctx)[:, -1, :]
-            logits[:, 0] = float("inf")          # never re-emit the start token
+            logits = self(ctx)[:, -1, :].clone()   # clone: do not touch the graph
+            logits[:, 0] = float("inf")            # never re-emit the start token
             probs = F.softmax(-logits / temperature, dim=-1)
             nxt = torch.multinomial(probs, num_samples=1)
             total += logits.gather(1, nxt)
