@@ -66,8 +66,9 @@ Online training closed the loop: the model writes circuits, we score them, and t
 | Method | Structure energy | Gap to best | F1 |
 |---|---|---|---|
 | ViennaRNA (target) | **−7.90** | 0.00 | 1.00 |
-| Brute force (exact QUBO) | −7.9 | 0.00 | 1.00 |
-| **GQE (ours)** | **−7.9** | **0.0** | **1.0** |
+| Brute force (exact QUBO) | −7.90 | 0.00 | 1.00 |
+| **GQE (ours) 27 qubits** | **−7.90** | **0.00** | **1.0** |
+| **GQE (ours) 22 qubits** | **−7.00** | **0.9** | **0.79** |
 | Simulated annealing | −7.9 | 0.0 | 1.0 |
 | Classical GPT (no quantum) | *did not find a valid structure* | | |
 | Random search | *did not find a valid structure* | | |
