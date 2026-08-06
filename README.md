@@ -1,4 +1,4 @@
-# Teaching a GPT to Write Quantum Circuits for RNA Folding
+# Enhancing VQE/QAOA Scalability Using a GPT
 
 **WISER Summer Program 2026 — Moderna Challenge**
 *Optimization of mRNA Secondary Structure Prediction Using Quantum Computing*
@@ -51,7 +51,7 @@ This was our main experiment, and the difference is large.
 | Circuits come from | rolling dice | the model itself |
 | Dataset | 512 circuits, frozen | rolling window, refreshed each epoch |
 | Model shapes its own data | no | yes |
-| Best circuits reach the optimum | **0%** | **100%** |
+| Best circuits reach the optimum | **0-1.6%** | **100%** |
 
 Offline training got much better at *predicting* energies — the loss fell from 1707 to 319. But the circuits it wrote never improved. It only ever sees random circuits, and random circuits almost never visit the good part of the landscape.
 
@@ -61,21 +61,18 @@ Online training closed the loop: the model writes circuits, we score them, and t
 
 ## Results
 
-**44-base test sequence, 22 qubits, 4096 shots per circuit**
+**44-base test sequence, 22/27 qubits, 4096/32768 shots per circuit**
 
 | Method | Structure energy | Gap to best | F1 |
 |---|---|---|---|
 | ViennaRNA (target) | **−7.90** | 0.00 | 1.00 |
-| Brute force (exact QUBO) | −7.00 | 0.90 | 0.79 |
-| **GQE (ours)** | **−7.00** | **0.90** | **0.79** |
-| Simulated annealing | −7.00 | 0.90 | 0.79 |
-| Greedy | −3.70 | 4.20 | 0.67 |
+| Brute force (exact QUBO) | −7.9 | 0.00 | 1.00 |
+| **GQE (ours)** | **−7.9** | **0.0** | **1.0** |
+| Simulated annealing | −7.9 | 0.0 | 1.0 |
 | Classical GPT (no quantum) | *did not find a valid structure* | | |
 | Random search | *did not find a valid structure* | | |
 
 **GQE matched the exact QUBO optimum.** It also beat the classical GPT ablation — same model, same budget, the only difference being whether a quantum circuit sits in between.
-
-The 0.90 gap is not a search failure. It is the **encoding error**: our QUBO holds pair interactions only, so it cannot capture how three stems interact at once. Every method in the table inherits the same gap.
 
 ---
 
@@ -96,7 +93,7 @@ The 0.90 gap is not a search failure. It is the **encoding error**: our QUBO hol
 
 ## How to run it
 
-1. Upload **`gqe-rna.zip`** to the top level of your Google Drive. Do not unzip it.
+1. Upload **`gqe-rna.zip`** to the top level of your Google Drive. Do not unzip it.(do this step just for notebook 01 only)
 2. Open [Google Colab](https://colab.research.google.com) → **File → Upload notebook**.
 3. **Runtime → Change runtime type → T4 GPU** (the free tier is enough).
 4. **Run all.** Start with notebook 01 and go in order.
@@ -133,9 +130,7 @@ Results are saved to your Drive, so each notebook picks up where the last one st
 
 | Name | Email |
 |---|---|
-| *(your name)* | *(your email)* |
-| | |
-| | |
+| *Hussein Shiri* | *h.y.shiri18@gmail.com* |
 
 ## Credits
 
