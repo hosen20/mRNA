@@ -5,7 +5,7 @@
 
 We take the **Generative Quantum Eigensolver (GQE)**, built for molecules, and apply it to RNA folding. A small GPT learns to write quantum circuits. When we measure those circuits, the answers are low-energy RNA structures. We check every result against ViennaRNA.
 
-📹 **Video walkthrough:** *(add your link here)*
+📹 **Video walkthrough:** *https://www.loom.com/share/457a0863654a4be384f9e80e6f63661b*
 
 ---
 
