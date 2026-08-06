@@ -30,7 +30,7 @@ We do not put one qubit per base pair — that needs over 100 qubits. Instead we
 ```mermaid
 flowchart LR
     A["RNA sequence"] --> B["Find all stems"]
-    B --> C["One qubit per stem<br/>22 qubits"]
+    B --> C["One qubit per stem<br/>22-27 qubits"]
     C --> D["GPT writes<br/>a circuit"]
     D --> E["Measure it"]
     E --> F["Bitstring →<br/>structure"]
@@ -67,9 +67,9 @@ Online training closed the loop: the model writes circuits, we score them, and t
 |---|---|---|---|
 | ViennaRNA (target) | **−7.90** | 0.00 | 1.00 |
 | Brute force (exact QUBO) | −7.90 | 0.00 | 1.00 |
-| **GQE (ours) 27 qubits** | **−7.90** | **0.00** | **1.0** |
-| **GQE (ours) 22 qubits** | **−7.00** | **0.9** | **0.79** |
-| Simulated annealing | −7.9 | 0.0 | 1.0 |
+| **GQE (ours) 27 qubits** | **−7.90** | **0.00** | **1.00** |
+| **GQE (ours) 22 qubits** | **−7.00** | **0.90** | **0.79** |
+| Simulated annealing | −7.9 | 0.00 | 1.00 |
 | Classical GPT (no quantum) | *did not find a valid structure* | | |
 | Random search | *did not find a valid structure* | | |
 
