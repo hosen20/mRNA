@@ -101,7 +101,7 @@ Qubit count depends on how much structure a sequence has, not only its length. S
 
 ### Table 2 — what GQE found
 
-All runs used 4096 shots per circuit and 16 gates per circuit.
+All runs used 4096 shots per circuit and 16 gates per circuit. This table on T4 GPU took around 30 minutes to run for all sequences combined.
 
 | Sequence | Min stem | Qubits | CNOTs | Best possible | GQE found | Encoding gap | Search gap | F1 | Reached QUBO optimum |
 |---|---|---|---|---|---|---|---|---|---|
@@ -122,7 +122,7 @@ All runs used 4096 shots per circuit and 16 gates per circuit.
 - **CNOTs** — two-qubit gates needed for one cost layer if the circuit were compiled to real hardware. Two CNOTs per interacting pair of stems.
 - **Best possible** — the lowest energy any bitstring in this encoding can reach, found by brute force. This is the target the search is aiming at, not the target nature is aiming at.
 - **GQE found** — the energy of the structure our method actually produced, scored by ViennaRNA.
-- **Encoding gap** — *best possible* minus *ViennaRNA*. What the model cannot represent, no matter how good the search is. Caused by dropped short helices and by loop energies our QUBO does not model.
+- **Encoding gap** — *best possible* minus *ViennaRNA*. What the model cannot represent, no matter how good the search is. Caused by dropped short helices and by loop energies our QUBO does not model. We could have changed m to represent the missed helices for example but we wanted to keep that to show where the failings might happen as if all the table is 100% accurate then no meaning to show it, we wanted to show on purpose what can go wrong and why.
 - **Search gap** — *GQE found* minus *best possible*. What the search missed. This is the only column that measures the quantum method itself.
 - **F1** — how many of ViennaRNA's base pairs we recovered. 1.00 means an exact structural match.
 - **Reached QUBO optimum** — whether GQE found the best bitstring available to it.
