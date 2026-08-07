@@ -156,7 +156,7 @@ This is the most common misreading, so it is worth being precise.
 
 ## Optional advanced tasks
 
-The brief lists four. We attempted all four; here is honest status on each.
+The brief lists four. We attempted all four; here is a short status on each.
 
 **1. Pseudoknot-aware formulation.** A pseudoknot is two helices that cross. Classical dynamic programming cannot represent them at all, because crossing breaks the recursion it depends on. In our QUBO it is a single flag: `build_qubo(..., allow_pseudoknots=True)` drops the crossing penalty and nothing else changes. Notebook 05 compares the constraint counts with and without it. **Caveat we state rather than hide:** ViennaRNA cannot score a pseudoknotted structure, so we lose our reference. The claim is that our formulation *can express* pseudoknots at no extra cost, not that our pseudoknotted predictions are more accurate.
 
@@ -237,7 +237,7 @@ Results are saved to your Drive, so each notebook picks up where the last one st
 
 ---
 
-## Team
+## Team qRNA
 
 | Name | Email |
 |---|---|
