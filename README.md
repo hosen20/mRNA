@@ -101,20 +101,20 @@ Qubit count depends on how much structure a sequence has, not only its length. S
 
 ### Table 2 — what GQE found
 
-All runs used 4096 shots per circuit and 16 gates per circuit. This table on T4 GPU took around 30 minutes to run for all sequences combined.
+All runs used 400 epochs, 4096 shots per circuit and 16 gates per circuit. This table on T4 GPU took around 20-30 minutes to run for all sequences combined.
 
-| Sequence | Min stem | Qubits | CNOTs | Best possible | GQE found | Encoding gap | Search gap | F1 | Reached QUBO optimum |
-|---|---|---|---|---|---|---|---|---|---|
-| S1 | 3 | 13 | 156 | −9.00 | −9.00 | +0.00 | +0.00 | 1.00 | yes |
-| S1 | 4 | 7 | 42 | −9.00 | −9.00 | +0.00 | +0.00 | 1.00 | yes |
-| S2 | 3 | 10 | 90 | −4.10 | −4.10 | +0.50 | +0.00 | 0.80 | yes |
-| S2 | 4 | 5 | 20 | −4.10 | −4.10 | +0.50 | +0.00 | 0.80 | yes |
-| S3 | 3 | 18 | 298 | −3.00 | −3.00 | +1.30 | +0.00 | 0.00 | yes |
-| S3 | 4 | 5 | 16 | −2.30 | −2.30 | +2.00 | +0.00 | 0.80 | yes |
-| S4 | 3 | 17 | 270 | −6.20 | −6.20 | +0.90 | +0.00 | 0.60 | yes |
-| S4 | 4 | 6 | 30 | −6.20 | −6.20 | +0.90 | +0.00 | 0.60 | yes |
-| S5 | 3 | 23 | 484 | −8.90 | −6.30 | +1.20 | **+2.60** | 0.55 | **no** |
-| S5 | 4 | 10 | 86 | −8.90 | −8.90 | +1.20 | +0.00 | 0.00 | yes |
+| Sequence | Min stem | Qubits | CNOTs | Best possible | GQE found | Encoding gap | Search gap | F1 | Reached QUBO optimum | Time |
+|---|---|---|---|---|---|---|---|---|---|---|
+| S1 | 3 | 13 | 156 | −9.00 | −9.00 | +0.00 | +0.00 | 1.00 | yes | 61s |
+| S1 | 4 | 7 | 42 | −9.00 | −9.00 | +0.00 | +0.00 | 1.00 | yes | 54s |
+| S2 | 3 | 10 | 90 | −4.10 | −4.10 | +0.50 | +0.00 | 0.80 | yes | 59s |
+| S2 | 4 | 5 | 20 | −4.10 | −4.10 | +0.50 | +0.00 | 0.80 | yes | 56s |
+| S3 | 3 | 18 | 298 | −3.00 | −3.00 | +1.30 | +0.00 | 0.00 | yes | 76s |
+| S3 | 4 | 5 | 16 | −2.30 | −2.30 | +2.00 | +0.00 | 0.80 | yes | 66s |
+| S4 | 3 | 17 | 270 | −6.20 | −6.20 | +0.90 | +0.00 | 0.60 | yes | 65s |
+| S4 | 4 | 6 | 30 | −6.20 | −6.20 | +0.90 | +0.00 | 0.60 | yes | 52s |
+| S5 | 3 | 23 | 484 | −8.90 | −6.30 | +1.20 | **+2.60** | 0.55 | **no** | 901s |
+| S5 | 4 | 10 | 86 | −8.90 | −8.90 | +1.20 | +0.00 | 0.00 | yes | 54s |
 
 ### What the columns mean
 
