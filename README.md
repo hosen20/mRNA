@@ -133,12 +133,28 @@ Results are saved to your Drive, so each notebook picks up where the last one st
 |---|---|
 | *Hussein Shiri* | *h.y.shiri18@gmail.com* |
 
-## Credits
+## Sources, datasets and tools
 
-- Nakaji et al., *The generative quantum eigensolver (GQE)*, [arXiv:2401.09253](https://arxiv.org/abs/2401.09253)
-- [PennyLane GQE demo](https://pennylane.ai/demos/gqe_training)
-- Fox et al., *RNA folding using quantum computers*, PLOS Comput Biol 2022 — the stem-per-qubit encoding
-- Egger et al., *Warm-starting quantum optimization* — our initial state
-- [ViennaRNA](https://www.tbi.univie.ac.at/RNA/) — every energy in this repo
+**Methods we built on**
 
-Only random and public RNA sequences were used. No Moderna, patient, clinical, or proprietary data.
+- Nakaji et al., *The generative quantum eigensolver (GQE) and its application for ground state search*, [arXiv:2401.09253](https://arxiv.org/abs/2401.09253) — the algorithm we adapted.
+- [PennyLane GQE demo](https://pennylane.ai/demos/gqe_training), Xanadu — the reference implementation we started from. Our simulator is validated against PennyLane in notebook 03.
+- Fox et al., *RNA folding using quantum computers*, PLOS Computational Biology 2022 — the one-qubit-per-stem encoding.
+- Zaborniak et al., *A QUBO model of the RNA folding problem optimized by variational hybrid quantum annealing*, [arXiv:2208.04367](https://arxiv.org/abs/2208.04367) — QUBO formulation of RNA folding.
+- Egger, Mareček and Woerner, *Warm-starting quantum optimization*, Quantum 5, 479 (2021) — our biased initial state.
+- Barkoutsos et al., *Improving variational quantum optimization using CVaR*, Quantum 4, 256 (2020) — the CVaR objective.
+- Shao et al., *DeepSeekMath* — the GRPO loss, included as an alternative to logit matching.
+- Karpathy, [nanoGPT](https://github.com/karpathy/nanoGPT) (MIT) — the transformer design our model follows.
+
+**Software**
+
+- [ViennaRNA](https://www.tbi.univie.ac.at/RNA/) (Lorenz et al., 2011) — supplies every energy in this project. It provides the reference MFE structures and the stem energies our QUBO is built from.
+- [PyTorch](https://pytorch.org/) — the transformer and training loops.
+- [NumPy](https://numpy.org/) — the statevector simulator.
+- [PennyLane](https://pennylane.ai/) — used to cross-check our simulator.
+- [Google Colab](https://colab.research.google.com) — all runs used the free T4 GPU tier.
+- [Claude](https://claude.ai) (Anthropic) — used throughout for code development, debugging, and drafting documentation.
+
+**Data**
+
+No external dataset was used. All RNA sequences are either randomly generated in `src/rna.py` or the public example sequence from the WISER challenge brief. No Moderna data, patient data, clinical data, proprietary sequences, or personally identifiable information was used at any point.
