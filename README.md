@@ -87,6 +87,14 @@ To show the method is not tuned to one example, we ran the full pipeline on five
 
 ### Table 1 — what the encoding costs
 
+| | Length | Sequence |
+|---|---|---|
+| **S1** | 24 nt | `CUGCGGCGGGCAGCUGUGCUGCGU` |
+| **S2** | 30 nt | `AUCGAUGACAUGUGCCUGGUACUUCGGCAG` |
+| **S3** | 36 nt | `UUCAGCAAUGGAUGUGCGUAUGCCUCGGAAACGCGU` |
+| **S4** | 44 nt | `AGGAACAACGUGGUACGGCGCAGGUGUCCAGUACUAGACAAAUG` |
+| **S5** | 50 nt | `GUUUCGGUGAACACCCAACUGAAGCGACAUGUUCGGCUCUUCACCCAUCU` |
+
 | Sequence | Length | Qubits (min stem 3) | Qubits (min stem 4) | ViennaRNA MFE | ViennaRNA time |
 |---|---|---|---|---|---|
 | S1 | 24 nt | 13 | 7 | −9.00 kcal/mol | 0.8 ms |
