@@ -85,15 +85,13 @@ The classical GPT row is the control that isolates the quantum contribution: the
 
 To show the method is not tuned to one example, we ran the full pipeline on five sequences at two different minimum stem lengths. All ten runs are independent — fresh model, fresh simulator, fresh seed.
 
-### Table 1 — what the encoding costs
+- **S1** — 24 nt · `CUGCGGCGGGCAGCUGUGCUGCGU`
+- **S2** — 30 nt · `AUCGAUGACAUGUGCCUGGUACUUCGGCAG`
+- **S3** — 36 nt · `UUCAGCAAUGGAUGUGCGUAUGCCUCGGAAACGCGU`
+- **S4** — 44 nt · `AGGAACAACGUGGUACGGCGCAGGUGUCCAGUACUAGACAAAUG`
+- **S5** — 50 nt · `GUUUCGGUGAACACCCAACUGAAGCGACAUGUUCGGCUCUUCACCCAUCU`
 
-| | Length | Sequence |
-|---|---|---|
-| **S1** | 24 nt | `CUGCGGCGGGCAGCUGUGCUGCGU` |
-| **S2** | 30 nt | `AUCGAUGACAUGUGCCUGGUACUUCGGCAG` |
-| **S3** | 36 nt | `UUCAGCAAUGGAUGUGCGUAUGCCUCGGAAACGCGU` |
-| **S4** | 44 nt | `AGGAACAACGUGGUACGGCGCAGGUGUCCAGUACUAGACAAAUG` |
-| **S5** | 50 nt | `GUUUCGGUGAACACCCAACUGAAGCGACAUGUUCGGCUCUUCACCCAUCU` |
+### Table 1 — what the encoding costs
 
 | Sequence | Length | Qubits (min stem 3) | Qubits (min stem 4) | ViennaRNA MFE | ViennaRNA time |
 |---|---|---|---|---|---|
